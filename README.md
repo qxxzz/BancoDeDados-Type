@@ -176,7 +176,31 @@ Ao final, o programa calcula e salva a média das notas para cada matéria no ba
 
 ---
 
-## 10. Estrutura do Banco de Dados
+## 10. Configuração Docker
+
+1. Use o comando **docker --version** e ira aparecer uma mensagem similar a essa:
+
+```bash
+Docker version 28.3.2, build 578ccf6
+```
+
+2. Agora dentro do terminal do proprio docker ou o terminal comum use o script abaixo:
+
+```bash
+docker --version
+hostname
+docker run -d `
+--name meu-postgres `
+-e POSTGRES_USER=aluno `
+-e POSTGRES_PASSWORD=102030 `
+-e POSTGRES_DB=db_profedu `
+-p 5432:5432 `
+postgres:latest
+```
+
+---
+
+## 11. Estrutura do Banco de Dados
 
 Script SQL para criação das tabelas e inserção das matérias:
 
