@@ -38,15 +38,13 @@ Antes de executar o sistema, é necessário ter instalado:
 ```bash
 Atividade-Type-Media/
 ├─ dist/
-│  ├─ index.js           # Arquivo compilado do TypeScript
-│  ├─ alunos.csv         # Base de dados dos alunos
-│  └─ boletim_Nome.txt   # Boletim individual
-├─ node_modules/         # Dependências do projeto
-├─ index.ts              # Código principal do sistema
-├─ package.json          # Dependências e scripts do Node.js
-├─ package-lock.json     # Controle de versões das dependências
-├─ tsconfig.json         # Configuração do TypeScript
-└─ README.md             # Manual de utilização e informações do projeto
+│  ├─ ExercicioBancoDeDados.js           
+├─ node_modules/         
+├─ ExercicioBancoDeDados.ts              
+├─ package-lock.json          
+├─ package.json     
+├─ READMe.md         
+└─ tsconfig.json             
 ````
 
 ---
