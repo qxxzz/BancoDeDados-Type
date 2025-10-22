@@ -76,7 +76,7 @@ git clone https://github.com/seu-usuario/seu-repositorio.git](https://github.com
 2. Entre na pasta do projeto:
 
 ```bash
-cd Atividade-Type-Media
+cd BancoDeDados-Type
 ```
 
 3. Instale as dependências:
