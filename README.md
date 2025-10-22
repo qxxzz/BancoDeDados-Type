@@ -198,6 +198,8 @@ docker run -d `
 postgres:latest
 ```
 
+3. Pronto agora o servidor Docker esta pronto para funcionar
+
 ---
 
 ## 11. Estrutura do Banco de Dados
