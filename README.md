@@ -2,7 +2,7 @@
 
 **Autores:**
 
-* João Pedro de Andrade Silva – 2508650
+* João Pedro de Andrade Silva – 2508650  
 * Caio Zanffolim Cunha – 2509832
 
 ## 1. Introdução
@@ -15,21 +15,21 @@ Essa atividade foi solicitada como uma introdução da junção de **Banco de Da
 
 Antes de executar o sistema, é necessário ter instalado:
 
-* **Docker Desktop**
-* **pgAdmin 4**
-* **Node.js**
-* **VS Code** 
-* **npm** 
+* **Docker Desktop**  
+* **pgAdmin 4**  
+* **Node.js**  
+* **VS Code**   
+* **npm**   
 
 ---
 
 ## 3. Tecnologias Utilizadas
 
-* **TypeScript**
-* **Node.js**
-* **Banco de Dados**
-* **Docker**
-* **pgAdmin 4**
+* **TypeScript**  
+* **Node.js**  
+* **Banco de Dados**  
+* **Docker**  
+* **pgAdmin 4**  
 
 ---
 
@@ -43,44 +43,60 @@ Atividade-Type-Media/
 ├─ ExercicioBancoDeDados.ts              
 ├─ package-lock.json          
 ├─ package.json     
-├─ READMe.md         
+├─ README.md         
 └─ tsconfig.json             
-````
+5. Funcionalidades do Sistema
+Cadastro de alunos com nome, idade e série.
 
----
+Inserção das 8 notas para cada uma das 3 matérias: Matemática, Geografia e História.
 
-## 5. Funcionalidades do Sistema
+Cálculo da média das notas de cada matéria.
 
-* **Entrada:** nome, série, total de aulas, faltas e notas (trabalhos e provas).
-* **Cálculos:** presença (%) e média de cada matéria.
-* **Aprovação:** presença mínima de 75% e nota mínima 7 por matéria.
-* **Saída:** boletim individual em TXT, com status aprovado/reprovado.
-* **Armazenamento:** todos os alunos registrados no `alunos.csv`.
+Armazenamento dos dados no banco PostgreSQL via container Docker.
 
----
+Interface via terminal para entrada interativa dos dados.
 
-## 6. Comandos de Instalação e Configuração
+Possibilidade de inserir notas para até 3 matérias diferentes para um mesmo aluno.
 
-```bash
-# Instalar dependências
+6. Comandos de Instalação e Configuração
+Clone o repositório:
+
+bash
+Copiar código
+git clone https://github.com/seu-usuario/seu-repositorio.git
+Entre na pasta do projeto:
+
+bash
+Copiar código
+cd Atividade-Type-Media
+Instale as dependências:
+
+bash
+Copiar código
 npm install
+Compile o TypeScript:
 
-# Compilar o TypeScript para JavaScript
-npm run build
-```
+bash
+Copiar código
+npx tsc
+Configure o banco de dados PostgreSQL (utilizando Docker e pgAdmin) conforme o script SQL fornecido.
 
----
+Execute a aplicação:
 
-## 7. package.json recomendado
-
-```json
+bash
+Copiar código
+node dist/ExercicioBancoDeDados.js
+7. package.json recomendado
+json
+Copiar código
 {
   "name": "escrever-no-banco",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node dist/ExercicioBancoDeDados.js",
+    "build": "tsc"
   },
   "keywords": [],
   "author": "",
@@ -95,14 +111,9 @@ npm run build
     "typescript": "^5.9.3"
   }
 }
-
-```
-
----
-
-## 8. tsconfig.json recomendado
-
-```json
+8. tsconfig.json recomendado
+json
+Copiar código
 {
   "compilerOptions": {
     "target": "es2020",
@@ -115,25 +126,80 @@ npm run build
     "skipLibCheck": true
   }
 }
-```
+9. Como Executar
+Após configurar e rodar o container do PostgreSQL, siga os passos abaixo:
 
----
+Compile o projeto TypeScript:
 
-## 9. Como Executar
+bash
+Copiar código
+npx tsc
+Execute o arquivo JavaScript gerado:
 
-No terminal, dentro da pasta raiz do projeto:
+bash
+Copiar código
+node dist/ExercicioBancoDeDados.js
+Siga as instruções do terminal para:
 
-```bash
-# Rodar o programa compilado
-npm start
-```
+Inserir nome, idade e série do aluno.
 
-Ou diretamente com Node:
+Escolher a matéria para inserir notas (Matemática, Geografia ou História).
 
-```bash
-node dist/index.js
-```
+Informar as 8 notas da matéria escolhida.
 
----
+Repetir para as demais matérias se desejar.
 
+Ao final, o programa calcula e salva a média das notas para cada matéria no banco.
 
+10. Estrutura do Banco de Dados
+Criação das tabelas
+sql
+Copiar código
+CREATE TABLE public.pessoas (
+    codigo SERIAL PRIMARY KEY,
+    nome VARCHAR(100),
+    serie VARCHAR(10),
+    idade INTEGER
+);
+
+CREATE TABLE public.materia (
+    id SERIAL PRIMARY KEY,
+    nome_materia VARCHAR(50) NOT NULL
+);
+
+INSERT INTO public.materia (nome_materia)
+VALUES ('Matematica'), ('Geografia'), ('Historia');
+
+CREATE TABLE public.notas (
+    id SERIAL PRIMARY KEY,
+    codigo_aluno INTEGER REFERENCES public.pessoas(codigo),
+    id_materia INTEGER REFERENCES public.materia(id),
+    nota1 NUMERIC(4,2),
+    nota2 NUMERIC(4,2),
+    nota3 NUMERIC(4,2),
+    nota4 NUMERIC(4,2),
+    nota5 NUMERIC(4,2),
+    nota6 NUMERIC(4,2),
+    nota7 NUMERIC(4,2),
+    nota8 NUMERIC(4,2),
+    media NUMERIC(4,2)
+);
+11. Configuração do Git (Opcional)
+Configure seu usuário git com:
+
+bash
+Copiar código
+git config --global user.name "Seu Nome"
+git config --global user.email "seuemail@example.com"
+Para subir o código ao GitHub:
+
+bash
+Copiar código
+git add .
+git commit -m "Minha mensagem de commit"
+git push origin main
+12. Contribuição
+Contribuições são bem-vindas! Abra uma issue ou faça um pull request.
+
+13. Licença
+Este projeto está licenciado sob a MIT License.
