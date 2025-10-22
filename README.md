@@ -1,13 +1,15 @@
 # Atividade-Type-BancoDeDados
 
-**Autores:**
+**Autores**
 
-* João Pedro de Andrade Silva – 2508650  
-* Caio Zanffolim Cunha – 2509832
+- João Pedro de Andrade Silva – 2508650  
+- Caio Zanffolim Cunha – 2509832
+
+---
 
 ## 1. Introdução
 
-Essa atividade foi solicitada como uma introdução da junção de **Banco de Dados** com **TypeScript** e como ela funciona, na atividade nos foi pedido a criação de uma **API** que calculasse a media dos alunos, muito similar a outra atividade ja feita. Mas neste caso devemos refazer e armazenar em um **banco de dados**.
+Esta atividade foi solicitada como uma introdução à junção de **Banco de Dados** com **TypeScript**. Na atividade foi pedido a criação de uma **API/Aplicação** que calculasse a média das notas por matéria para alunos e persistisse esses dados em um banco PostgreSQL (rodando via Docker).
 
 ---
 
@@ -15,80 +17,93 @@ Essa atividade foi solicitada como uma introdução da junção de **Banco de Da
 
 Antes de executar o sistema, é necessário ter instalado:
 
-* **Docker Desktop**  
-* **pgAdmin 4**  
-* **Node.js**  
-* **VS Code**   
-* **npm**   
+- Docker Desktop  
+- pgAdmin 4 (opcional, mas recomendado para visualização do banco)  
+- Node.js  
+- VS Code (ou outro editor de código)  
+- npm
 
 ---
 
 ## 3. Tecnologias Utilizadas
 
-* **TypeScript**  
-* **Node.js**  
-* **Banco de Dados**  
-* **Docker**  
-* **pgAdmin 4**  
+- TypeScript  
+- Node.js  
+- PostgreSQL (via Docker)  
+- Docker  
+- pgAdmin 4  
+- readline-sync (para interface via terminal)
 
 ---
 
 ## 4. Estrutura do Projeto
 
+Estrutura esperada do projeto:
+
 ```bash
 Atividade-Type-Media/
 ├─ dist/
-│  ├─ ExercicioBancoDeDados.js           
-├─ node_modules/         
-├─ ExercicioBancoDeDados.ts              
-├─ package-lock.json          
-├─ package.json     
-├─ README.md         
-└─ tsconfig.json             
-5. Funcionalidades do Sistema
-Cadastro de alunos com nome, idade e série.
+│  ├─ ExercicioBancoDeDados.js
+├─ node_modules/
+├─ ExercicioBancoDeDados.ts
+├─ package-lock.json
+├─ package.json
+├─ README.md
+└─ tsconfig.json
+```
 
-Inserção das 8 notas para cada uma das 3 matérias: Matemática, Geografia e História.
+---
 
-Cálculo da média das notas de cada matéria.
+## 5. Funcionalidades do Sistema
 
-Armazenamento dos dados no banco PostgreSQL via container Docker.
+- Cadastro de alunos com nome, idade e série.  
+- Inserção de 8 notas para cada uma das 3 matérias: Matemática, Geografia e História.  
+- Cálculo da média das notas de cada matéria.  
+- Armazenamento dos dados no banco PostgreSQL via container Docker.  
+- Interface via terminal para entrada interativa dos dados.  
+- Possibilidade de inserir notas para até 3 matérias diferentes para um mesmo aluno.
 
-Interface via terminal para entrada interativa dos dados.
+---
 
-Possibilidade de inserir notas para até 3 matérias diferentes para um mesmo aluno.
+## 6. Comandos de Instalação e Configuração
 
-6. Comandos de Instalação e Configuração
-Clone o repositório:
+1. Clone o repositório:
 
-bash
-Copiar código
+```bash
 git clone https://github.com/seu-usuario/seu-repositorio.git
-Entre na pasta do projeto:
+```
 
-bash
-Copiar código
+2. Entre na pasta do projeto:
+
+```bash
 cd Atividade-Type-Media
-Instale as dependências:
+```
 
-bash
-Copiar código
+3. Instale as dependências:
+
+```bash
 npm install
-Compile o TypeScript:
+```
 
-bash
-Copiar código
+4. Compile o TypeScript:
+
+```bash
 npx tsc
-Configure o banco de dados PostgreSQL (utilizando Docker e pgAdmin) conforme o script SQL fornecido.
+```
 
-Execute a aplicação:
+5. Configure o banco de dados PostgreSQL (utilizando Docker e pgAdmin) conforme o script SQL fornecido na seção "Estrutura do Banco de Dados".
 
-bash
-Copiar código
+6. Execute a aplicação:
+
+```bash
 node dist/ExercicioBancoDeDados.js
-7. package.json recomendado
-json
-Copiar código
+```
+
+---
+
+## 7. package.json recomendado
+
+```json
 {
   "name": "escrever-no-banco",
   "version": "1.0.0",
@@ -111,9 +126,13 @@ Copiar código
     "typescript": "^5.9.3"
   }
 }
-8. tsconfig.json recomendado
-json
-Copiar código
+```
+
+---
+
+## 8. tsconfig.json recomendado
+
+```json
 {
   "compilerOptions": {
     "target": "es2020",
@@ -126,35 +145,42 @@ Copiar código
     "skipLibCheck": true
   }
 }
-9. Como Executar
+```
+
+---
+
+## 9. Como Executar
+
 Após configurar e rodar o container do PostgreSQL, siga os passos abaixo:
 
-Compile o projeto TypeScript:
+1. Compile o projeto TypeScript:
 
-bash
-Copiar código
+```bash
 npx tsc
-Execute o arquivo JavaScript gerado:
+```
 
-bash
-Copiar código
+2. Execute o arquivo JavaScript gerado:
+
+```bash
 node dist/ExercicioBancoDeDados.js
-Siga as instruções do terminal para:
+```
 
-Inserir nome, idade e série do aluno.
+3. Siga as instruções do terminal para:
 
-Escolher a matéria para inserir notas (Matemática, Geografia ou História).
-
-Informar as 8 notas da matéria escolhida.
-
-Repetir para as demais matérias se desejar.
+- Inserir nome, idade e série do aluno.  
+- Escolher a matéria para inserir notas (Matemática, Geografia ou História).  
+- Informar as 8 notas da matéria escolhida.  
+- Repetir para as demais matérias se desejar.  
 
 Ao final, o programa calcula e salva a média das notas para cada matéria no banco.
 
-10. Estrutura do Banco de Dados
-Criação das tabelas
-sql
-Copiar código
+---
+
+## 10. Estrutura do Banco de Dados
+
+Script SQL para criação das tabelas e inserção das matérias:
+
+```sql
 CREATE TABLE public.pessoas (
     codigo SERIAL PRIMARY KEY,
     nome VARCHAR(100),
@@ -184,22 +210,15 @@ CREATE TABLE public.notas (
     nota8 NUMERIC(4,2),
     media NUMERIC(4,2)
 );
-11. Configuração do Git (Opcional)
-Configure seu usuário git com:
+```
 
-bash
-Copiar código
-git config --global user.name "Seu Nome"
-git config --global user.email "seuemail@example.com"
-Para subir o código ao GitHub:
+Observações:
 
-bash
-Copiar código
-git add .
-git commit -m "Minha mensagem de commit"
-git push origin main
-12. Contribuição
-Contribuições são bem-vindas! Abra uma issue ou faça um pull request.
+- Ajuste os nomes das tabelas/colunas caso o código TypeScript espere outros nomes.  
+- Certifique-se de criar o banco e o usuário no PostgreSQL e configurar as variáveis de conexão no seu código (host, port, user, password, database).
 
-13. Licença
-Este projeto está licenciado sob a MIT License.
+---
+
+
+
+
